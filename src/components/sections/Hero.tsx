@@ -4,6 +4,13 @@ import { Star, Users, Award, TrendingUp, MessageCircle } from "lucide-react";
 import Image from "next/image";
 
 export default function Hero() {
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById("services");
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <section className="bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 text-white min-h-screen flex items-center relative overflow-hidden">
       {/* Background decorative elements */}
@@ -117,7 +124,10 @@ export default function Hero() {
                 <MessageCircle className="w-5 h-5" />
                 Quero Minha Consultoria
               </a>
-              <button className="bg-transparent border-2 border-white text-white cursor-pointer hover:bg-white hover:text-primary-600 font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2">
+              <button
+                onClick={scrollToServices}
+                className="bg-transparent border-2 border-white text-white cursor-pointer hover:bg-white hover:text-primary-600 font-semibold py-3 px-6 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2"
+              >
                 Conhecer os Cursos
               </button>
             </div>
