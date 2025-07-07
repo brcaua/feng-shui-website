@@ -1,36 +1,116 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Metafísica Oriental Brasil - Site Oficial
 
-## Getting Started
+Site oficial da Metafísica Oriental Brasil, especializada em Feng Shui Tradicional e Astrologia Chinesa com o Professor Luiz Carlos Akira.
 
-First, run the development server:
+## 🚀 Tecnologias Utilizadas
+
+- **Next.js 15** - Framework React com otimizações de SEO
+- **TailwindCSS v4** - Framework de CSS para estilização
+- **TypeScript** - Tipagem estática
+- **Lucide React** - Ícones modernos
+
+## ✨ Funcionalidades
+
+### 📱 Responsivo
+
+- Design adaptável para desktop, tablet e mobile
+- Navegação otimizada para todos os dispositivos
+
+### 🔍 SEO Otimizado
+
+- Meta tags completas
+- Schema markup (dados estruturados)
+- Sitemap automático
+- Robots.txt dinâmico
+- Open Graph e Twitter Cards
+
+### 💬 Conversão
+
+- Botão fixo do WhatsApp
+- **Popup de exit intent** com oferta especial
+- CTAs estratégicos em todas as seções
+- Prova social com testemunhas
+- Senso de urgência e escassez
+
+### 📄 Seções
+
+1. **Hero** - Apresentação com proposta de valor
+2. **Serviços** - Consultorias e cursos disponíveis
+3. **Sobre** - Apresentação do Professor Luiz Carlos Akira
+4. **Testemunhas** - 5 depoimentos de clientes
+5. **Footer** - Informações de contato
+
+## ⚙️ Configuração do Popup
+
+O popup de conversão está configurado para aparecer:
+
+- ✅ Após **5 segundos** (configuração de teste)
+- ✅ Quando o usuário move o mouse para fora da página
+- ✅ Quando tenta fechar a aba/navegar para outro site
+- ✅ Quando a janela perde o foco
+
+### 🔧 Para Produção
+
+Para alterar o tempo do popup para 1 minuto em produção:
+
+1. Abra o arquivo: `src/components/ui/ExitIntentPopup.tsx`
+2. Na linha 13, altere:
+   ```typescript
+   }, 5000) // 5 segundos para teste
+   ```
+   Para:
+   ```typescript
+   }, 60000) // 1 minuto para produção
+   ```
+
+## 🛠️ Instalação e Execução
 
 ```bash
+# Instalar dependências
+npm install
+
+# Executar em modo de desenvolvimento
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# Build para produção
+npm run build
+
+# Executar versão de produção
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📞 Contato
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Telefone:** +55 (41) 99116-0348
+- **Email:** metafisicaorientalbra@gmail.com
+- **Instagram:** [@metafisicaorientalbrasil](https://www.instagram.com/metafisicaorientalbrasil/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🌐 Deploy
 
-## Learn More
+Para deploy em produção, recomendamos:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Vercel** (recomendado) - Deploy automático com Next.js
+2. **Netlify** - Alternativa gratuita
+3. **AWS Amplify** - Para projetos maiores
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Deploy na Vercel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Instalar Vercel CLI
+npm i -g vercel
 
-## Deploy on Vercel
+# Deploy
+vercel
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📈 Analytics e Tracking
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Para adicionar Google Analytics:
+
+1. Crie uma conta no Google Analytics
+2. Adicione o ID de tracking no arquivo `src/app/layout.tsx`
+3. Configure os eventos de conversão nos botões de CTA
+
+---
+
+Desenvolvido com 💚 para transformar vidas através do Feng Shui e Astrologia Chinesa.
