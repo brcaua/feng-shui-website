@@ -269,7 +269,8 @@ export default function FengShuiEmpresarial() {
                 </p>
                 <div className="bg-white rounded-lg p-6 shadow-lg">
                   <p className="text-primary-600 font-semibold italic">
-                    "Assim como é feito nas maiores corporações da Ásia"
+                    &quot;Assim como é feito nas maiores corporações da
+                    Ásia&quot;
                   </p>
                 </div>
               </div>
@@ -291,9 +292,9 @@ export default function FengShuiEmpresarial() {
               </p>
               <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20">
                 <p className="text-lg italic mb-4">
-                  "A Consultoria de Feng Shui Tradicional Comercial aplica
+                  &quot;A Consultoria de Feng Shui Tradicional Comercial aplica
                   estratégias milenares para criar ambientes empresariais que
-                  impulsionam lucro, produtividade e estabilidade."
+                  impulsionam lucro, produtividade e estabilidade.&quot;
                 </p>
                 <p className="text-gold-400 font-semibold">
                   - Professor Luiz Carlos Akira

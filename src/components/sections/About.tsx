@@ -152,10 +152,10 @@ export default function About() {
                 🎯 Missão e Filosofia
               </h4>
               <p className="text-gray-700">
-                "Acredito que todos merecem viver em harmonia com as energias
-                que os cercam. Minha missão é compartilhar esse conhecimento
-                milenar de forma acessível e prática, ajudando pessoas a
-                transformarem seus espaços e suas vidas."
+                &quot;Acredito que todos merecem viver em harmonia com as
+                energias que os cercam. Minha missão é compartilhar esse
+                conhecimento milenar de forma acessível e prática, ajudando
+                pessoas a transformarem seus espaços e suas vidas.&quot;
               </p>
             </div>
           </div>

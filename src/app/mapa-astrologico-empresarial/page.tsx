@@ -6,9 +6,7 @@ import {
   Building2,
   CheckCircle,
   Clock,
-  Calendar,
   Users,
-  Shield,
   Award,
   Phone,
   Mail,
@@ -406,9 +404,10 @@ export default function MapaAstrologicoEmpresarial() {
                   </div>
                 </div>
                 <p className="text-gray-700 italic">
-                  "A análise astrológica nos ajudou a identificar o momento
+                  &quot;A análise astrológica nos ajudou a identificar o momento
                   perfeito para expandir nossos negócios. Seguindo as
-                  orientações, conseguimos um crescimento de 300% em 18 meses!"
+                  orientações, conseguimos um crescimento de 300% em 18
+                  meses!&quot;
                 </p>
               </div>
 
@@ -425,9 +424,9 @@ export default function MapaAstrologicoEmpresarial() {
                   </div>
                 </div>
                 <p className="text-gray-700 italic">
-                  "As previsões astrológicas nos permitiram antecipar tendências
-                  de mercado. Conseguimos nos posicionar antes da concorrência e
-                  multiplicamos nossa receita!"
+                  &quot;As previsões astrológicas nos permitiram antecipar
+                  tendências de mercado. Conseguimos nos posicionar antes da
+                  concorrência e multiplicamos nossa receita!&quot;
                 </p>
               </div>
             </div>

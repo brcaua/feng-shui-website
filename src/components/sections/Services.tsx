@@ -1,16 +1,6 @@
 "use client";
 
-import {
-  Home,
-  Building2,
-  Star,
-  BookOpen,
-  Users,
-  Calendar,
-  CheckCircle,
-  GraduationCap,
-} from "lucide-react";
-import image from "next/image";
+import Image from "next/image";
 
 export default function Services() {
   const handleNavigate = (path: string) => {
@@ -128,12 +118,12 @@ export default function Services() {
                 className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-2 border-gray-100"
               >
                 <div className="aspect-video relative overflow-hidden">
-                  <img
+                  <Image
                     src={service.image}
-                    width={100}
-                    height={100}
                     alt={service.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
                 <div className="p-6">
@@ -177,12 +167,12 @@ export default function Services() {
                 className="bg-white rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 border-2 border-gray-100"
               >
                 <div className="aspect-video relative overflow-hidden">
-                  <img
+                  <Image
                     src={course.image}
-                    width={100}
-                    height={100}
                     alt={course.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                 </div>
                 <div className="p-6">

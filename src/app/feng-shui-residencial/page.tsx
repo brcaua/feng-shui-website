@@ -6,9 +6,6 @@ import {
   Home,
   CheckCircle,
   Clock,
-  Calendar,
-  Users,
-  Shield,
   Award,
   Phone,
   Mail,
@@ -367,10 +364,10 @@ export default function FengShuiResidencial() {
                   </div>
                 </div>
                 <p className="text-gray-700 italic">
-                  "Após a consultoria de Feng Shui, minha casa se transformou em
-                  um verdadeiro santuário. Os conflitos familiares diminuíram
-                  drasticamente e meu negócio começou a prosperar de forma
-                  incrível!"
+                  &quot;Após a consultoria de Feng Shui, minha casa se
+                  transformou em um verdadeiro santuário. Os conflitos
+                  familiares diminuíram drasticamente e meu negócio começou a
+                  prosperar de forma incrível!&quot;
                 </p>
               </div>
 
@@ -385,10 +382,10 @@ export default function FengShuiResidencial() {
                   </div>
                 </div>
                 <p className="text-gray-700 italic">
-                  "Incrível como pequenos ajustes na disposição dos móveis e
-                  elementos podem fazer tanta diferença. Minha família está mais
-                  unida e nossa situação financeira melhorou
-                  significativamente!"
+                  &quot;Incrível como pequenos ajustes na disposição dos móveis
+                  e elementos podem fazer tanta diferença. Minha família está
+                  mais unida e nossa situação financeira melhorou
+                  significativamente!&quot;
                 </p>
               </div>
             </div>

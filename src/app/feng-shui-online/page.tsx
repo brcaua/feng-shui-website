@@ -280,11 +280,11 @@ export default function FengShuiOnline() {
             </p>
             <div className="bg-white rounded-xl p-8 shadow-lg">
               <p className="text-lg text-gray-700 italic">
-                "Com aulas online ao vivo e gravadas, mentoria exclusiva,
+                &quot;Com aulas online ao vivo e gravadas, mentoria exclusiva,
                 certificado de reconhecimento internacional e material didático
                 completo, você aprenderá a interpretar plantas baixas,
                 identificar direções favoráveis e criar ambientes que promovem
-                saúde, prosperidade e equilíbrio."
+                saúde, prosperidade e equilíbrio.&quot;
               </p>
               <p className="text-primary-600 font-semibold mt-4">
                 - Professor Luiz Carlos Akira

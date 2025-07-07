@@ -1,7 +1,5 @@
 "use client";
 
-import { Phone } from "lucide-react";
-
 interface WhatsAppContactButtonProps {
   message: string;
   children: React.ReactNode;

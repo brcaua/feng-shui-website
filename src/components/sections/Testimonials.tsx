@@ -121,7 +121,7 @@ export default function Testimonials() {
             </div>
 
             <blockquote className="text-gray-700 text-sm leading-relaxed">
-              "{testimonials[1].message}"
+              &quot;{testimonials[1].message}&quot;
             </blockquote>
           </div>
         </div>
@@ -156,7 +156,7 @@ export default function Testimonials() {
               </div>
 
               <blockquote className="text-gray-700 text-sm leading-relaxed">
-                "{testimonial.message}"
+                &quot;{testimonial.message}&quot;
               </blockquote>
             </div>
           ))}
