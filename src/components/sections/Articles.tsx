@@ -2,7 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { Star } from 'lucide-react';
 import { getPublishedArticles } from '@/lib/articleStorage';
+import { getArticleRatings } from '@/lib/ratingsStorage';
 import { Article } from '@/types/article';
 
 export default function Articles() {
@@ -12,7 +14,16 @@ export default function Articles() {
   useEffect(() => {
     const loadArticles = () => {
       const publishedArticles = getPublishedArticles();
-      setArticles(publishedArticles.slice(0, 3));
+      // Add ratings to articles
+      const articlesWithRatings = publishedArticles.map(article => {
+        const ratings = getArticleRatings(article.id);
+        return {
+          ...article,
+          averageRating: ratings.average,
+          totalRatings: ratings.total
+        };
+      });
+      setArticles(articlesWithRatings.slice(0, 3));
       setIsLoading(false);
     };
 
@@ -72,6 +83,16 @@ export default function Articles() {
                 <p className="text-gray-600 mb-4 line-clamp-3">
                   {article.excerpt}
                 </p>
+                {/* Rating Display */}
+                {article.totalRatings && article.totalRatings > 0 && (
+                  <div className="flex items-center mb-3">
+                    <div className="flex items-center">
+                      <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                      <span className="ml-1 text-sm font-medium text-gray-700">{article.averageRating}</span>
+                      <span className="ml-1 text-sm text-gray-500">({article.totalRatings} avaliações)</span>
+                    </div>
+                  </div>
+                )}
                 <div className="flex items-center justify-between">
                   <div className="flex flex-wrap gap-2">
                     {article.tags.slice(0, 2).map((tag, index) => (

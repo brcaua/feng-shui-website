@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { MessageCircle, Reply, Send } from 'lucide-react';
+import { MessageCircle, Reply, Send, Check } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { Comment } from '@/types/article';
-import { getArticleComments, addComment, addReply } from '@/lib/ratingsStorage';
+import { getArticleComments, getAllArticleComments, addComment, addReply, approveComment } from '@/lib/ratingsStorage';
 
 interface CommentsSectionProps {
   articleId: string;
@@ -22,7 +22,8 @@ export default function CommentsSection({ articleId }: CommentsSectionProps) {
 
   useEffect(() => {
     const loadComments = () => {
-      const articleComments = getArticleComments(articleId);
+      // Show all comments if admin, only approved if not admin
+      const articleComments = isAuthenticated ? getAllArticleComments(articleId) : getArticleComments(articleId);
       setComments(articleComments);
       setIsLoading(false);
     };
@@ -35,7 +36,7 @@ export default function CommentsSection({ articleId }: CommentsSectionProps) {
 
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
-  }, [articleId]);
+  }, [articleId, isAuthenticated]);
 
   const handleSubmitComment = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,7 +51,7 @@ export default function CommentsSection({ articleId }: CommentsSectionProps) {
     setIsSubmitting(false);
     
     // Reload comments
-    const updatedComments = getArticleComments(articleId);
+    const updatedComments = isAuthenticated ? getAllArticleComments(articleId) : getArticleComments(articleId);
     setComments(updatedComments);
   };
 
@@ -66,7 +67,14 @@ export default function CommentsSection({ articleId }: CommentsSectionProps) {
     setIsSubmitting(false);
     
     // Reload comments
-    const updatedComments = getArticleComments(articleId);
+    const updatedComments = isAuthenticated ? getAllArticleComments(articleId) : getArticleComments(articleId);
+    setComments(updatedComments);
+  };
+
+  const handleApproveComment = (commentId: string) => {
+    approveComment(commentId);
+    // Reload comments
+    const updatedComments = isAuthenticated ? getAllArticleComments(articleId) : getArticleComments(articleId);
     setComments(updatedComments);
   };
 
@@ -188,17 +196,36 @@ export default function CommentsSection({ articleId }: CommentsSectionProps) {
             <div key={comment.id} className="bg-white border border-gray-200 rounded-lg p-6">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h4 className="font-semibold text-gray-900">{comment.name}</h4>
+                  <div className="flex items-center gap-2">
+                    <h4 className="font-semibold text-gray-900">{comment.name}</h4>
+                    {!comment.isApproved && (
+                      <span className="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full">
+                        Pendente
+                      </span>
+                    )}
+                  </div>
                   <p className="text-sm text-gray-500">{formatDate(comment.timestamp)}</p>
                 </div>
                 {isAuthenticated && (
-                  <button
-                    onClick={() => setReplyTo(replyTo === comment.id ? null : comment.id)}
-                    className="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center"
-                  >
-                    <Reply size={16} className="mr-1" />
-                    Responder
-                  </button>
+                  <div className="flex items-center space-x-2">
+                    {!comment.isApproved && (
+                      <button
+                        onClick={() => handleApproveComment(comment.id)}
+                        className="text-green-600 hover:text-green-800 text-sm font-medium flex items-center"
+                        title="Aprovar comentário"
+                      >
+                        <Check size={16} className="mr-1" />
+                        Aprovar
+                      </button>
+                    )}
+                    <button
+                      onClick={() => setReplyTo(replyTo === comment.id ? null : comment.id)}
+                      className="text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center"
+                    >
+                      <Reply size={16} className="mr-1" />
+                      Responder
+                    </button>
+                  </div>
                 )}
               </div>
               

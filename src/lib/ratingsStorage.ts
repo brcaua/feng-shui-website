@@ -119,6 +119,10 @@ export function getArticleComments(articleId: string): Comment[] {
   return getComments().filter(c => c.articleId === articleId && c.isApproved);
 }
 
+export function getAllArticleComments(articleId: string): Comment[] {
+  return getComments().filter(c => c.articleId === articleId);
+}
+
 export function getAllComments(): Comment[] {
   return getComments().sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
 }
