@@ -24,7 +24,7 @@ export default function ArticlePage() {
   const [editTags, setEditTags] = useState('');
   const [editIsPublished, setEditIsPublished] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
-  const [ratings, setRatings] = useState({ average: 0, total: 0, userRating: undefined });
+  const [ratings, setRatings] = useState<{ average: number; total: number; userRating?: number }>({ average: 0, total: 0 });
   const params = useParams();
   const router = useRouter();
   const { isAuthenticated } = useAuth();
