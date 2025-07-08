@@ -35,8 +35,12 @@ export default function RichTextEditor({ content, onChange, placeholder }: RichT
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (editorRef.current && editorRef.current.innerHTML !== content) {
-      editorRef.current.innerHTML = content;
+    // Set initial content when component mounts or content changes from outside
+    if (editorRef.current && content !== editorRef.current.innerHTML) {
+      // Only update if the editor is not focused (user is not typing)
+      if (document.activeElement !== editorRef.current) {
+        editorRef.current.innerHTML = content;
+      }
     }
   }, [content]);
 
@@ -318,7 +322,6 @@ export default function RichTextEditor({ content, onChange, placeholder }: RichT
         onInput={handleInput}
         className="min-h-[400px] p-4 prose max-w-none focus:outline-none rich-text-editor"
         style={{ minHeight: isExpanded ? '600px' : '400px' }}
-        dangerouslySetInnerHTML={{ __html: content }}
         data-placeholder={placeholder}
       />
       

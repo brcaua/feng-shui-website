@@ -2,14 +2,30 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { Edit, Trash2, Plus } from 'lucide-react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/sections/Footer';
-import { getPublishedArticles } from '@/lib/articleStorage';
+import { useAuth } from '@/contexts/AuthContext';
+import { getPublishedArticles, deleteArticle } from '@/lib/articleStorage';
 import { Article } from '@/types/article';
 
 export default function ArticlesPage() {
   const [articles, setArticles] = useState<Article[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
+  const { isAuthenticated } = useAuth();
+
+  const handleEdit = (id: string) => {
+    router.push(`/admin/articles/edit/${id}`);
+  };
+
+  const handleDelete = (id: string) => {
+    if (window.confirm('Tem certeza que deseja excluir este artigo?')) {
+      deleteArticle(id);
+      setArticles(articles.filter(article => article.id !== id));
+    }
+  };
 
   useEffect(() => {
     const loadArticles = () => {
@@ -51,6 +67,18 @@ export default function ArticlesPage() {
       <div className="pt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center mb-12">
+            <div className="flex justify-between items-start mb-6">
+              <div></div>
+              {isAuthenticated && (
+                <Link
+                  href="/admin/articles/new"
+                  className="flex items-center bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                >
+                  <Plus size={16} className="mr-2" />
+                  Novo Artigo
+                </Link>
+              )}
+            </div>
             <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl">
               Artigos
             </h1>
@@ -102,12 +130,32 @@ export default function ArticlesPage() {
                           </span>
                         ))}
                       </div>
-                      <Link 
-                        href={`/artigos/${article.slug}`}
-                        className="text-blue-600 hover:text-blue-800 font-medium text-sm"
-                      >
-                        Ler mais →
-                      </Link>
+                      <div className="flex items-center space-x-2">
+                        {isAuthenticated && (
+                          <>
+                            <button
+                              onClick={() => handleEdit(article.id)}
+                              className="text-yellow-600 hover:text-yellow-800 p-1"
+                              title="Editar artigo"
+                            >
+                              <Edit size={16} />
+                            </button>
+                            <button
+                              onClick={() => handleDelete(article.id)}
+                              className="text-red-600 hover:text-red-800 p-1"
+                              title="Excluir artigo"
+                            >
+                              <Trash2 size={16} />
+                            </button>
+                          </>
+                        )}
+                        <Link 
+                          href={`/artigos/${article.slug}`}
+                          className="text-blue-600 hover:text-blue-800 font-medium text-sm"
+                        >
+                          Ler mais →
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </article>
