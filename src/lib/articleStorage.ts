@@ -62,3 +62,41 @@ export function generateSlug(title: string): string {
 export function generateId(): string {
   return Date.now().toString(36) + Math.random().toString(36).substr(2);
 }
+
+export function incrementArticleViews(slug: string): void {
+  const articles = getArticles();
+  const articleIndex = articles.findIndex(a => a.slug === slug);
+  
+  if (articleIndex >= 0) {
+    articles[articleIndex].views = (articles[articleIndex].views || 0) + 1;
+    articles[articleIndex].lastViewedAt = new Date().toISOString();
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(articles));
+  }
+}
+
+export function getArticleViews(slug: string): number {
+  const article = getArticleBySlug(slug);
+  return article?.views || 0;
+}
+
+export function getArticleAnalytics(): { totalViews: number; articlesWithViews: number; topArticles: Array<{title: string; slug: string; views: number}> } {
+  const articles = getArticles();
+  const totalViews = articles.reduce((sum, article) => sum + (article.views || 0), 0);
+  const articlesWithViews = articles.filter(article => (article.views || 0) > 0).length;
+  
+  const topArticles = articles
+    .filter(article => article.views && article.views > 0)
+    .sort((a, b) => (b.views || 0) - (a.views || 0))
+    .slice(0, 5)
+    .map(article => ({
+      title: article.title,
+      slug: article.slug,
+      views: article.views || 0
+    }));
+  
+  return {
+    totalViews,
+    articlesWithViews,
+    topArticles
+  };
+}

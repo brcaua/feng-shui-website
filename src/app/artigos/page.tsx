@@ -16,8 +16,8 @@ export default function ArticlesPage() {
   const router = useRouter();
   const { isAuthenticated } = useAuth();
 
-  const handleEdit = (id: string) => {
-    router.push(`/admin/articles/edit/${id}`);
+  const handleEdit = (slug: string) => {
+    router.push(`/artigos/${slug}`);
   };
 
   const handleDelete = (id: string) => {
@@ -109,10 +109,15 @@ export default function ArticlesPage() {
               {articles.map((article) => (
                 <article key={article.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
                   <div className="p-6">
-                    <div className="flex items-center mb-4">
+                    <div className="flex items-center justify-between mb-4">
                       <span className="text-sm text-gray-500">
                         {new Date(article.publishedAt).toLocaleDateString('pt-BR')}
                       </span>
+                      {isAuthenticated && (
+                        <span className="text-sm text-blue-600 font-medium">
+                          {article.views || 0} visualizações
+                        </span>
+                      )}
                     </div>
                     <h2 className="text-xl font-semibold text-gray-900 mb-3">
                       <Link href={`/artigos/${article.slug}`} className="hover:text-blue-600 transition-colors">
@@ -134,7 +139,7 @@ export default function ArticlesPage() {
                         {isAuthenticated && (
                           <>
                             <button
-                              onClick={() => handleEdit(article.id)}
+                              onClick={() => handleEdit(article.slug)}
                               className="text-yellow-600 hover:text-yellow-800 p-1"
                               title="Editar artigo"
                             >

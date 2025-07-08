@@ -73,14 +73,16 @@ export default function Navbar() {
                   </button>
                 </div>
               )}
-              <a
-                href="https://wa.me/5541991160348?text=Olá,%20Professor%20Luiz%20Carlos%20Akira!%20Gostaria%20de%20saber%20mais%20sobre%20as%20consultorias."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
-              >
-                WhatsApp
-              </a>
+              {!isAuthenticated && (
+                <a
+                  href="https://wa.me/5541991160348?text=Olá,%20Professor%20Luiz%20Carlos%20Akira!%20Gostaria%20de%20saber%20mais%20sobre%20as%20consultorias."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+                >
+                  WhatsApp
+                </a>
+              )}
             </div>
           </div>
 
@@ -140,15 +142,17 @@ export default function Navbar() {
                   </button>
                 </div>
               )}
-              <a
-                href="https://wa.me/5541991160348?text=Olá,%20Professor%20Luiz%20Carlos%20Akira!%20Gostaria%20de%20saber%20mais%20sobre%20as%20consultorias."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-green-500 hover:bg-green-600 text-white block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-200 text-center"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                WhatsApp
-              </a>
+              {!isAuthenticated && (
+                <a
+                  href="https://wa.me/5541991160348?text=Olá,%20Professor%20Luiz%20Carlos%20Akira!%20Gostaria%20de%20saber%20mais%20sobre%20as%20consultorias."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-green-500 hover:bg-green-600 text-white block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-200 text-center"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  WhatsApp
+                </a>
+              )}
             </div>
           </div>
         </div>
