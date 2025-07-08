@@ -75,6 +75,12 @@ export default function ArticlesPage() {
               </div>
               <div className="flex items-center space-x-4">
                 <button
+                  onClick={() => router.push('/')}
+                  className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium"
+                >
+                  Ver Site
+                </button>
+                <button
                   onClick={() => router.push('/admin/articles/new')}
                   className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium"
                 >
